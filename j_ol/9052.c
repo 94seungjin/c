@@ -13,10 +13,10 @@ int main()
         sum += num;
     }
 
-    printf("ÃÑÁ¡ : %d\n", sum);
+    printf("ÃƒÃ‘ÃÂ¡ : %d\n", sum);
 
     avg = (float)sum / count;
-    printf("Æò±Õ : %.1f\n", avg);
+    printf("Ã†Ã²Â±Ã• : %.1f\n", avg);
 
     return 0;
 }
