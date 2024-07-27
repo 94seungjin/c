@@ -1,0 +1,145 @@
+// 7월 15일 월요일 //
+==============================================
+※ 자주 사용하는 shell command 숙지하기! ※
+C:\Users\INO07>cd \
+C:\>dir
+
+C:\>cd workspace
+C:\workspace>dir
+
+C:\workspace>cd work
+
+C:\workspace\work>dir
+
+C:\workspace\work>cd exercise
+
+C:\workspace\work\exercise>d
+
+C:\workspace\work\exercise>dir
+
+C:\workspace\work\exercise>devenv.bat
+
+C:\workspace\work\exercise>mkdir XX
+
+C:\workspace\work\exercise>e
+'e'은(는) 내부 또는 외부 명령, 실행할 수 있는 프로그램, 또는
+배치 파일이 아닙니다.
+
+C:\workspace\work\exercise>d
+'d'은(는) 내부 또는 외부 명령, 실행할 수 있는 프로그램, 또는
+배치 파일이 아닙니다.
+
+C:\workspace\work\exercise>
+C:\workspace\work\exercise>dir
+
+C:\workspace\work\exercise>cd xx
+
+C:\workspace\work\exercise\XX>dir
+ C 드라이브의 볼륨에는 이름이 없습니다.
+ 볼륨 일련 번호: 6AD9-F33E
+
+ C:\workspace\work\exercise\XX 디렉터리
+
+2024-07-15  오전 10:23    <DIR>          .
+2024-07-15  오전 10:23    <DIR>          ..
+               0개 파일                   0 바이트
+               2개 디렉터리  465,498,120,192 바이트 남음
+
+C:\workspace\work\exercise\XX>echo >> hello.c
+
+C:\workspace\work\exercise\XX>notepad hello.c
+==============================================
+1. CRT(C-Runtime)
+	(1) 정의
+		- 운영체제 위 또는 운영체제 자체에서 실행되면서 특정 프로그래밍 언어가 구동될 수 있는 환경
+2. Stack Pointer vs Stack Frame (*)
+	(1) Stack Pointer(SP)
+		- 스택의 가장 위쪽 데이터의 위치를 가리키며, 데이터의 삽입 및 삭제는 스택 포인터를 이용하여 수행.
+		- 데이터를 삽입할 때는 스택 포인터를 먼저 증가시킨 다음, 그 위치에 데이터를 저장.
+		- 데이터를 삭제할 때는 스택 포인터를 먼저 감소시킨 다음, 그 위치에 있는 데이터를 반환하거나 삭제.
+		- 스택의 맨 위에 있는 데이터를 가리키기 때문에, 스택이 비어 있을 때는 스택 포인터는 스택의 가장 아래쪽 주소를 가리킴.
+		- 스택 포인터는 일반적으로 하드웨어 레지스터에 저장되며, 프로세서가 스택 연산 명령을 실행할 때마다  스택 포인터가 자동으로 증가하거나 감소.
+	(2) Stack Frame
+		- 함수가 호출되면 사용하는 스택 영역. 함수가 호출될 때 스택 프레임이 생성되고, 함수가 종료되면 함께 소멸.
+
+
+ 	(3) 예제(도형으로 frame 그려가면서 해보기)
+	int main()
+		{
+			int k = 1;	// stack에 RAM  할당. Stack Pointer. C-Runtime이 스택의 위치를 잡아줌. 그리고 그 범위가 스택 프레임.
+		}
+
+3. Line Feed(\n) / Carriage Return(\r)	-> Linux 사용할 때 주의하기!
+	(1) Line Feed(\n)
+		- 다음줄로 감.
+	(2) Carriage Return(\r)
+		- 그 줄 맨 앞으로 감.
+
+4. 정수(unsigned/signed) (*)
+	(1) char(1Byte)
+	(2) short(2Byte)
+	(3) int(2Byte/4Byte)
+	(4) long(4Byte)
+
+5. 실수 (*)
+	(1) float(4Byte)
+	(2) double(8Byte)
+
+6. 진수
+	(1) 10진수
+	(2) 8진수(파일 퍼미션 정도로 사용)
+	(3) 16진수(임베디드에서는 2진수와 16진수의 상호 교환을 많이 한다고 함)(여러가지 변환해보기)
+
+7. 문자(character)/문자열(string) (*)
+	(1) 문자
+		- character 'X'
+	(2) 문자열
+		- string "X"
+	(3) 예제(결과 값이 뭐가 나올지 생각)
+		1) printf("%c", 'A');		// 아스키코드 값을 받아 테이블에 있는 문자를 찍음. A
+		2) printf("%c", "A");		//
+		3) printf("%d", "A");		// 문자열 ""안에 있는 A에 대한 주소값
+		4) printf("%s", "A");		// A
+
+8. 형변환 (type cast) (*)
+	(1) Implicit cast
+	(2) Explicit cast
+	(3) Example
+		1)	int c;
+			int a;
+			c = a+1. ;	// (int) = (int) + (int)(double)
+
+		2) 	int c;
+			int a = 1;
+			c = a / 2 * 3.141592;
+			printf("%d", c);
+
+9. 보수(Complement) (*)
+	(1) 정의
+		- N의 보수라고 한다면 어떤 수가 N이 되기 위해 부족한 수만큼 보충을 해줘야 하는 수
+	(2) Example
+	char c = 0x12;
+	unsigned char us = 0x12;
+	0b 0000 0000;
+	0b 0001 0010;
+	int i = 0x12345678;
+	0b
+
+	음수 :
+		int i = 1;		// signed int
+	sc = 1;
+	0b 0000 0001;
+
+	sc = -1;
+	0b 0000 0001		// 1
+	0b 1111 1110		// 1's "1's complement"
+
+	0b 1111 1111		// 1's "2's complement"	=>-1
+          +0b 0000 0001		// 1
+
+10. 연산자 (종류)(우선순위->중요, 다시 정리하기)
+
+11. 배열(Array)
+
+	
+

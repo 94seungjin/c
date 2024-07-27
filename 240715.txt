@@ -1,0 +1,119 @@
+// 2024년 7월 15일 //
+// 1~2장 //
+/* 
+
+11. .text, .data, .bss (3개가 주데이터) - readonly(.rdata, .text)
+
+*/
+
+
+// Example //
+
+
+// 3장. 변수와 데이터 입력 // 
+
+/*
+
+
+	1. 선언
+		type identifier;
+		
+		ie,
+		{
+			int i;	// stack sizeof(int)
+	identifier={a-z, A-Z, 0-9, '_'}
+	
+	2. 정의
+		type identifier = init value;
+		
+		{
+			int i =123;
+			
+	1. 함수의 선언
+		void func1(void);		// 원형 prototype
+	
+	2. 함수의 정의
+		void func1(void){...};
+		
+	예제 3-1.c
+	-> 변수 선언 했을 때 SP 생각하면서 변수 설정하기
+	
+	3. L_value = 변수(왼쪽에 오는 값)
+	
+	c = 3;	// c is "L_value == 변수", R_value 라는 말은 c++에서 따로 있기 때문에 c에선 x
+	c = a;
+	
+	4. word size, register size = 몇 bit인지 알 수 있음. ALU
+	
+	5. 배열
+	
+		char chararry[3]={char, char, char};
+		char chararry[]={char, char, char};
+		char astr[] = {'h', 'e', 'l','l','o',0};
+		char bstr[] = "hello";
+		
+		char *cstr = {'h', 'e', 'l','l','o',0};	// ? x
+		char *cstr = "hello";	// o -> cstr, char*만큼
+		
+		bstr = "world";	// x
+			-> bstr은 변수 아님. 상수.
+		bstr[0] = 0;
+		cstr = "world";	// o
+			-> cstr은 변수임.
+		
+		printf("%d", astr);
+		printf("%d", bstr);
+		printf("%d", cstr);
+		
+		
+		astr[4] = 0 ;	// o
+		bstr[4] = 0 ;	// o
+		cstr[4] = 0 ;	// x
+		
+	6. pointer 변수 주소값을 갈아치울 수 있음. Array 갖고와서 채워넣음.
+	
+	7. Global vs Local
+
+char fruit[10] = "apple";
+{
+	fruit[0] = 'b';
+	fruit[1] = 'a'; 
+...
+..
+
+괄호 안에 있으면 스택에 잡힌다는거
+{
+char fruit[10] = "apple";
+}
+
+fruit = "banana"; // fruit은 변수가 아니라서 안됨.
+
+strcpy( fruit, "banana" );
+
+
+	8. const(L_value에 오는 표현을 못쓰게 한다. C: 기존에 정한 변수를 이후 다른걸로 바꿀 수 없음, C++ : 더 엄격)
+	변수를 선언/정의
+	(qualifier)		type	identifier (=i.v);
+			int 	i = 123;	
+
+	const int i = 123;
+	int * pi;
+	pi = &i;
+	*pi = 456;
+	printf("%d", i);	// 
+
+*/
+
+// ****4장. 연산자 ****//
+1. 산술/대입 : 이항 연산자. 양쪽 형 맞춰줘야함. 
+2. 증감(전위/후위)
+3. 논리 vs 비트(비트연산자는 한번 다시 확인해보기. ^: xor - 토글)(비트연산자는 임베디드에서 자주 쓰임)
+- ari shift/log shift
+4. type cast 연산자(c에서는 자주)(c++에서는 자주 안쓰게됨. 엄격) - exp cast/imp cast
+5. sizeof 연산자: 해당값을 저장하는데 얼마나 필요한지를 나타내줌. 상수, 변수는 ok, but pointer랑 array는 유의. 함수가 void면 리턴 안하는데 0byte?? Compiler마다 다를 수 있음.(명시 x).
+- 만약 void가 type이면 cast를 할 수 있어야함. 그래서 void는 type이 아님.
+- 그러면 void*???
+- 배열 size 실용적
+6. 조건 연산자(삼항연산자)(a?b:c)(a가 참이면 b, a가 거짓이면 c)
+7. 표 4-3 priority 1, 2
+		
