@@ -20,7 +20,7 @@ int main()
     {
         for (int j = number2; j >= number1; j--)
         {
-            printf("%d * %d = %2d   ", j, i, i * j);
+            printf("%d * %d = %3d   ", j, i, i * j);
         }
         printf("\n");
     }
