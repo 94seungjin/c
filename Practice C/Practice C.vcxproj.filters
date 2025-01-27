@@ -15,8 +15,8 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="250122\250122.c">
+    <None Include="250127\250127_9.c">
       <Filter>소스 파일</Filter>
-    </ClCompile>
+    </None>
   </ItemGroup>
 </Project>
